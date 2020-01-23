@@ -1,0 +1,164 @@
+
+html body .wrap > .content{
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+}
+html body  .line-of-hope{
+      display:inline-block;
+      width:100%;
+       margin-top: 15px;
+          margin-bottom: 35px;
+      height:4px;
+      background:rgb(241, 90, 36);
+}
+
+html body .i-hope-line > div{
+          display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+html body .i-hope-line > div span{
+        font-size: 15px;
+}
+
+html body .i-hope-line > div:first-child{
+      justify-content: flex-start;
+}
+
+html body .i-hope-line > div:last-child{
+      justify-content: flex-end;
+}
+
+html body .left-menu,
+html body .content-power {
+	margin-bottom: 35px;
+} 
+
+html body .content-power p,
+html body .content-power ul > li,
+html body .content-power ol > li,
+html body .content-power span
+{
+         font-family: Arial,"Helvetica Neue",Helvetica,sans-serif!important;
+          font-size: 14px!important;
+		  font-weight:normal!important;
+             color: #333333!important;
+}
+
+html body .content-power img{
+      margin-left:15px;
+         margin-right:15px;
+}
+
+html body .big-head{
+         font-weight: 700; 
+             font-size: 53px;
+             margin-bottom:45px;
+}
+
+html body .i-hope-line i.fa{ 
+    margin-right: 15px;
+}
+
+html body a.group-block{
+display: flex;
+    margin-bottom: 25px;
+    text-decoration: none;
+}
+ 
+html body a.group-block img{
+           float: left;
+    margin-right: 15px;
+}
+
+html body a.group-block .info-block{
+      float: left;
+}
+
+
+html body a.group-block .info-block > div{
+      margin-bottom: 10px;
+}
+
+html body a.group-block .info-block .views{
+   font-size:12px;
+    color: #333333;
+}
+
+html body a.group-block .info-block .views i{
+    color: #f15a24;
+}
+
+html body a.group-block .info-block  .category{
+    font-size: 12px;
+    color: #f15a24;
+}
+
+html body a.group-block .info-block .title{
+      color: #333333;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+
+html body a.group-block:hover .title{
+      color: #f15a24; 
+}
+
+html body a.group-block .block-image{
+    height: 100px;
+    background-position: center;
+     min-width: 130px;
+    margin-right:15px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+html body .left-menu .menushka{
+          position: sticky;
+    top: 25px;
+}
+
+html body .left-menu .menushka .interesno{
+          display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+     html body .big-head{
+         font-weight: 700; 
+             font-size: 24px;
+} 
+html body .content-power img{
+      margin-left:0px;
+         margin-right:0px;
+}
+html body .i-hope-line > div {
+    display: block;
+    margin-bottom: 14px;
+}
+html body .i-hope-line i.fa {
+    margin-right: 15px;
+}
+html body .i-hope-line i.fa-2x {
+    font-size: 1em;
+}
+html body a.group-block .info-block .category {
+      margin-top: 15px;
+}
+html body .content-power img{
+      margin-left:0px!important;
+      margin-right:0px!important;
+}
+html body a.group-block{
+          display: inline-block;
+}
+}
