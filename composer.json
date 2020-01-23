@@ -4,6 +4,7 @@
     "keywords": ["yii", "module", "blog"],
     "minimum-stability": "dev",	
     "prefer-stable": true,
+    "license": "MIT",
     "authors": [
         {
             "name": "Певнев Константин Геннадьевич",
