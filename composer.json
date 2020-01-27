@@ -13,7 +13,7 @@
     ],
     "type": "yii2-extension",
     "require": {
-        "php": ">=7.0.*",
+        "php": ">=7.0.0",
         "yiisoft/yii2": "*",
 		"kartik-v/yii2-widget-datetimepicker": "*",
 		"mihaildev/yii2-ckeditor": "*",		
