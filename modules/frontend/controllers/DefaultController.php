@@ -32,22 +32,19 @@ class DefaultController extends \yii\web\Controller
 	
     public function actionIndex()
     {
-
         $groupActive = 0;
 
         if (Yii::$app->request->isAjax) {
             $groupActive = (int) Yii::$app->request->post('groupActive');
         }
 
-        $newsGroup = BlogGroup::find()
+        $blogGroup = BlogGroup::find()
             ->where([BlogGroup::tableName().'.is_active' => BlogGroup::ACTIVE])
             ->with(['newsToGroup'])
             ->all();
 
-        $pagesCountQuery = Blog::find();
-        
-        $pagesCountQuery->where(['is_active' => Blog::ACTIVE]);
-        
+        $pagesCountQuery = Blog::find();        
+        $pagesCountQuery->where(['is_active' => Blog::ACTIVE]);        
           $pagesCountQuery->andWhere(['<', 'timestamp_start', date('Y-m-d H:i:s')]);
         if($groupActive > 0){
                        $pagesCountQuery->andWhere(['blog_group_id' => $groupActive]);
@@ -65,8 +62,7 @@ class DefaultController extends \yii\web\Controller
         ]);
 
        $query->offset($pages->offset);
-        $query->where(['is_active' => Blog::ACTIVE]);
-        
+        $query->where(['is_active' => Blog::ACTIVE]);        
           $query->andWhere(['<', 'timestamp_start', date('Y-m-d H:i:s')]);
               $query->andWhere(['is_group_active' => 1]);
         if($groupActive > 0){
@@ -74,27 +70,28 @@ class DefaultController extends \yii\web\Controller
        }
             $query->orderBy(['timestamp_start' => SORT_DESC]);
             $query->limit($pages->limit); 
-        $posts =  $query->all();
-          if($groupActive > 0){
-       shuffle($posts);
-}
 
-        if (!Yii::$app->request->isAjax) {
-            return $this->render('index', [
-                'newsGroup' => $newsGroup,
-                'pages' => $pages,
-                'pagesCount' => $pagesCount,
-                'pageSize' => $pageSize
-            ]);
-        } 
-		
         if (Yii::$app->request->isAjax) {
+        $posts =  $query->all();
+		
+          if($groupActive > 0){
+       shuffle($posts); // It makes user expirience more interesting
+}
+ 
         return $this->renderPartial('_index', [
             'pages' => $pages,
             'models' => $posts,
             'pagesCount' => $pagesCount,
         ]);
+		
         }
+		
+		      return $this->render('index', [
+                'blogGroup' => $blogGroup,
+                'pages' => $pages,
+                'pagesCount' => $pagesCount,
+                'pageSize' => $pageSize
+            ]);
     }
  
     public function actionView(string $url)
