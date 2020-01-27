@@ -7,11 +7,14 @@ use yii\helpers\Url;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 use wolverineo250kr\helpers\domain\DomainHelper; 
+use yii\web\NotFoundHttpException;
 use wolverineo250kr\blog\models\Blog;
 use wolverineo250kr\blog\models\BlogGroup;
 
 class DefaultController extends \yii\web\Controller
 {
+	public $domain;
+	
     public function actions()
     {
         return [
@@ -26,7 +29,7 @@ class DefaultController extends \yii\web\Controller
     }
         public function beforeAction($action)
     {
-
+	$this->domain = DomainHelper::getScheme().'://'.DomainHelper::getBase();
         return parent::beforeAction($action);
     }
 	
@@ -40,7 +43,7 @@ class DefaultController extends \yii\web\Controller
 
         $blogGroup = BlogGroup::find()
             ->where([BlogGroup::tableName().'.is_active' => BlogGroup::ACTIVE])
-            ->with(['newsToGroup'])
+            ->with(['blogToGroup'])
             ->all();
 
         $pagesCountQuery = Blog::find();        
@@ -102,11 +105,11 @@ class DefaultController extends \yii\web\Controller
   ->one();
  
           if (!$model) {
-            throw new \yii\web\NotFoundHttpException();
+            throw new NotFoundHttpException();
         }
         
            if ($model->timestamp_start >= date('Y-m-d H:i:s')) {
-         throw new \yii\web\NotFoundHttpException();
+         throw new NotFoundHttpException();
         }
         
 $isUnique = Yii::$app->cache->get($url.Yii::$app->session->id);
@@ -128,11 +131,9 @@ $readTime = $model->countReadTime($model->text);
         ->orderBy('RAND()')
     ->limit(4)
     ->all();
-
-        $domain = DomainHelper::getScheme().'://'.DomainHelper::getBase();
-
+ 
 $image = ''; // Path to your site logo
-        $imageModel = $domain.$model->getSrc(false);
+        $imageModel = $this->domain.$model->getSrc(false);
  
         $image      = ($imageModel) ? $imageModel : $image;
 
@@ -141,7 +142,7 @@ $image = ''; // Path to your site logo
         return $this->render('view', [
               'recomended' => $recomended,
               'readTime' => $readTime,
-                'domain' => $domain,
+                'domain' => $this->domain,
                 'model' => $model,
                 'image' => $image
         ]);
@@ -149,14 +150,7 @@ $image = ''; // Path to your site logo
     
             private function actionInjectMetaTags($model, $image, $url)
     {
-          
-       
-                             Yii::$app->view->registerMetaTag([
-        'name' => "pinterest-rich-pin",
-        'content' => "true"
-        ]); 
-        
-                      Yii::$app->view->registerMetaTag([
+           Yii::$app->view->registerMetaTag([
         'name' => "og:type",
         'content' => "article"
         ]); 
@@ -177,7 +171,7 @@ $image = ''; // Path to your site logo
           
                   Yii::$app->view->registerMetaTag([
         'name' => 'og:url',
-        'content' => $domain.Url::toRoute(['/blog/'.$url])
+        'content' => $this->domain.Url::toRoute(['/blog/'.$url])
         ]);
               Yii::$app->view->registerMetaTag([
         'name' => 'og:site_name',
