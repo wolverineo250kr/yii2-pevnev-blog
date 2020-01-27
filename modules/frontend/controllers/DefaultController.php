@@ -185,7 +185,7 @@ $image = ''; // Path to your site logo
         
                 Yii::$app->view->registerMetaTag([
         'name' => 'article:author',
-        'content' =>DomainHelper::getBase().' FASHIONCROCHET'
+        'content' =>DomainHelper::getBase()
         ]);      
     }
 }
