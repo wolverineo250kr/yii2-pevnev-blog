@@ -30,7 +30,7 @@ class BlogGroup extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getNewsToGroup()
+    public function getBlogToGroup()
     {
         return $this->hasMany(Blog::class, ['blog_group_id' => 'id'])
             ->andOnCondition([Blog::tableName().'.is_active' => Blog::ACTIVE])
