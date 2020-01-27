@@ -42,4 +42,3 @@ function adjustLeft(){
                          $('.left-menu').css('min-height');
        }
 }
- 
