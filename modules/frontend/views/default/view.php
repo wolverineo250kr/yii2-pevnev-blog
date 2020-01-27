@@ -43,7 +43,7 @@ PevnevBlogAsset::register($this);
                   <?foreach($recomended as $record):?> 
                   <a href="<?=Url::toRoute(['/blog/'.$record->url])?>" class="group-block">
                          <div class='block-image' style="background-image:url(<?=$record->getSrc(true)?>);">
-                               	 
+							 
                                </div>
                         
 					<div class="info-block">
