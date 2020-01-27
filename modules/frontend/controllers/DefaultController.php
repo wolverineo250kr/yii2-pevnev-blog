@@ -29,6 +29,7 @@ class DefaultController extends \yii\web\Controller
 
         return parent::beforeAction($action);
     }
+	
     public function actionIndex()
     {
 
@@ -98,7 +99,6 @@ class DefaultController extends \yii\web\Controller
  
     public function actionView(string $url)
     {
-
         $model = Blog::find()
          ->where(['url' => $url])
                 ->andWhere(['is_active' => Blog::ACTIVE]) 
