@@ -17,17 +17,15 @@ PevnevBlogGroupAsset::register($this);
         <div class="col-sm-2 group-line left-menu">  
             <a href='#' class='hidden-sm hidden-md hidden-lg anti-caret buttonShowMobileMenu right'><i class="fa fa-4x fa-caret-left" aria-hidden="true"></i></a>
             <a href='#' class='hidden-sm hidden-md hidden-lg anti-caret buttonShowMobileMenu left hidden'><i class="fa fa-4x fa-caret-right" aria-hidden="true"></i></a>
-            <div class="row">
-                <? $q = 0 ?>
+            <div class="row"> 
                 <? $i = 0 ?>
                 <? foreach ($blogGroup as $indexGroup => $group): ?> 
                     <? if (!empty($group->blogToGroup) || $group->id == 0): ?>
                         <div class="col-sm-12">
-                            <div class="group-block <?= $q == 0 ? 'active' : '' ?>" data-group-id="<?= $group->id ?>">
+                            <div class="group-block <?= $i == 0 ? 'active' : '' ?>" data-group-id="<?= $group->id ?>">
                                 <?= $group->name ?>  
                             </div>
-                        </div> 
-                        <? $q++ ?>
+                        </div>  
                         <? $i++ ?>
                     <? endif; ?>
                 <? endforeach; ?>
@@ -67,4 +65,3 @@ PevnevBlogGroupAsset::register($this);
         </div>   
     </div>
 </div>
-
