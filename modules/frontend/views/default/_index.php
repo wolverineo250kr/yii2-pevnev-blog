@@ -27,9 +27,8 @@ use yii\helpers\Url;
                 <? elseif ($model->text): ?>
                     <?= TextHelper::cut($model->text, 113, '...') ?>
                 <? endif; ?>
-
             </div>
-                                        <div class="views">
+			<div class="views">
                 <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<?= $model->views ?>
             </div>
             <div class="date">
@@ -38,4 +37,9 @@ use yii\helpers\Url;
 
         </div>
     </a>
-    </div><? if (($index + 1) % 3 == 0 || ($index + 1) == $countModels): ?><span class="hidden dobro"><?=$pagesCount?></span></div><? endif; ?><? endforeach; ?>
+    </div>
+	<? if (($index + 1) % 3 == 0 || ($index + 1) == $countModels): ?>
+	<span class="hidden dobro"><?=$pagesCount?></span>
+	</div>
+	<? endif; ?>
+	<? endforeach; ?>
