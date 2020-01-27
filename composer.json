@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "wolverineo250kr\\modules\\blog\\": ""
+            "wolverineo250kr\\blog\\": ""
         }
     }
 }
