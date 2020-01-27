@@ -20,8 +20,8 @@ PevnevBlogGroupAsset::register($this);
             <div class="row">
                 <? $q = 0 ?>
                 <? $i = 0 ?>
-                <? foreach ($newsGroup as $indexGroup => $group): ?> 
-                    <? if (!empty($group->newsToGroup) || $group->id == 0): ?>
+                <? foreach ($blogGroup as $indexGroup => $group): ?> 
+                    <? if (!empty($group->blogToGroup) || $group->id == 0): ?>
                         <div class="col-sm-12">
                             <div class="group-block <?= $q == 0 ? 'active' : '' ?>" data-group-id="<?= $group->id ?>">
                                 <?= $group->name ?>  
