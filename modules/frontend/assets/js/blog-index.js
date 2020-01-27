@@ -120,8 +120,7 @@ function loadNews() {
 }
 
 function separatorHeightReduction() {
-    var separatistovOtryad = rightMenu.find('.separator');
-    $.each(separatistovOtryad, function (key, value) {
+    $.each(rightMenu.find('.separator'), function (key, value) {
         var separatorHeight = $(value).height();
 
         if ($(window).width() < 991) {
