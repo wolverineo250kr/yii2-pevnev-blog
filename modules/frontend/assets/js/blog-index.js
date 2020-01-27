@@ -134,25 +134,23 @@ function separatorHeightReduction() {
 
 function plaingWithMobileMenu() {
     var blogMenu = $('.group-line.left-menu');
+    var timer;
+    clearInterval(timer);
     if ($(window).width() < 768) {
         if (blogMenu.hasClass('opened')) {
-            blogMenu.css('right', ''); // hide menu 
-            blogMenu.removeClass('opened'); // remove is opened detector class
+            blogMenu.css('right', '').removeClass('opened');
             rightMenu.find('.buttonShowMobileMenu.right').removeClass('hidden');
             rightMenu.find('.buttonShowMobileMenu.left').addClass('hidden');
             rightMenu.css('opacity', '');
-            var timer;
-            clearInterval(timer);
+
             timer = setTimeout(function () {
                 rightMenu.css('opacity', '');
             }, 0);
         } else {
-            blogMenu.css('right', '0%'); // show menu
-            blogMenu.addClass('opened'); // add is opened detector class
+            blogMenu.css('right', '0%').addClass('opened');
             rightMenu.find('.buttonShowMobileMenu.right').addClass('hidden');
             rightMenu.find('.buttonShowMobileMenu.left').removeClass('hidden');
-            var timer;
-            clearInterval(timer);
+
             timer = setTimeout(function () {
                 rightMenu.css('opacity', '0');
             }, 0);
