@@ -7,34 +7,32 @@ use yii\base\BootstrapInterface;
 /**
  * blog submodule definition class
  */
-class Module extends \yii\base\Module implements BootstrapInterface
-{
-    /**
-     * {@inheritdoc}
-     */
-    public $controllerNamespace = 'wolverineo250kr\blog\modules\frontend\controllers';
-    public $defaultRoute        = 'blog';
+class Module extends \yii\base\Module implements BootstrapInterface {
 
+    public $controllerNamespace = 'wolverineo250kr\blog\modules\frontend\controllers';
+	
+	/**
+     * Route can be set in app confic if needed
+     * @var str
+    */
+    public $defaultRoute = 'blog';
+ 
     /**
      * Bootstrap method to be called during application bootstrap stage.
      * @param Application $app the application currently running
      */
-    public function bootstrap($app)
-    {
+    public function bootstrap($app) {
         $rules = [
-             '/blog' => '/blog/default/index',
-             '/blog/<url:[\/\w\.\-]+$>' => '/blog/default/view',
+            '/'.$this->defaultRoute => '/blog/default/index',
+            '/'.$this->defaultRoute.'/<url:[\/\w\.\-]+$>' => '/blog/default/view',
         ];
         $app->getUrlManager()->addRules($rules, false);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function init()
-    {
+    public function init() {
         parent::init();
 
         // custom initialization code goes here
     }
+
 }
