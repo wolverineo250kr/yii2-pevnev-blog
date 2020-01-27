@@ -60,7 +60,7 @@ $('body').on('click', '#moreGiveMemore', function (e) {
         type: 'POST',
         data: {
             "yii.getCsrfParam()": yii.getCsrfToken(),
-            "groupActive": parseInt($('.group-block.active').attr('data-group-id'))
+            "groupActive": active
         },
         success: function (data) {
             button.button('success');
