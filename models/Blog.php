@@ -20,7 +20,7 @@ class Blog extends ActiveRecord
     const ACTIVE   = 1;
     const DISABLED = 0;
 
-    public $_imagesPath = '/text/news/';
+    public $_imagesPath = '/text/blog/';
     public $imageFile;
 
     /**
@@ -146,7 +146,7 @@ class Blog extends ActiveRecord
      */
     public function getPath()
     {
-        return '/news/'.$this->url;
+        return '/blog/'.$this->url;
     }
 
     private function delImage()
